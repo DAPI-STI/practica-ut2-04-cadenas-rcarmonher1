@@ -18,4 +18,25 @@ def emphasize_vowel(phrase: str, vowel: str) -> str:
     - Recorre la frase carácter a carácter y construye una nueva cadena.
     """
     # TODO: validar y transformar
-    raise NotImplementedError("Implementa emphasize_vowel(phrase, vowel)")
+    minuscula = vowel.lower()
+    validas = "aeiou"
+    lista = []
+    
+    if len(vowel) != 1:
+        raise ValueError("Solo debe introducirse 1 vocal")
+    
+    if minuscula not in validas:
+        raise ValueError("La vocal debe ser una vocal válida y no una consonante, número o cualquier otro carcater")
+    
+    mayuscula = vowel.upper()
+    
+    for char in phrase:
+        if char.lower() == minuscula:
+            lista.append(mayuscula)
+            
+        else:
+            lista.append(char)
+            
+    return "".join(lista)
+
+

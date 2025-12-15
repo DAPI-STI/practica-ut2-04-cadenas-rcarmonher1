@@ -13,4 +13,20 @@ Valida que haya exactamente dos decimales; en caso contrario, ValueError.
 def euros_cents(price_str: str) -> tuple[int, int]:
     """Separa la parte entera (euros) y los céntimos a partir de una cadena."""
     # TODO: sustituye coma por punto, separa, valida y convierte a enteros
-    raise NotImplementedError("Implementa euros_cents(price_str)")
+    punto = price_str.replace(',','.')
+    
+    if punto.count('.') != 1:
+        raise ValueError("El precio introducido es inválido")
+    
+    partes = punto.split('.')
+    euros = partes[0]
+    cents = partes[1]
+    
+    if len(cents) != 2:
+        raise ValueError("El precio introducido tiene más de 2 decimales")
+    
+    else:
+        euros = int(euros)
+        cents = int(cents)
+        return euros, cents
+    

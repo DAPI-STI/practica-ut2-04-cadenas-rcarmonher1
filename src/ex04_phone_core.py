@@ -14,4 +14,17 @@ def phone_core(s: str) -> str:
     - La parte central debe ser numérica.
     """
     # TODO: usa .strip(), .split("-") y validaciones con .isdigit() y startswith("+")
-    raise NotImplementedError("Implementa phone_core(s)")
+    cadena = s.strip()
+    sep = cadena.split("-")
+    centro = cadena
+    if len(sep) != 3:
+        raise ValueError("El número de teléfono debe estar separado en 3 partes por guiones")
+    
+    if not sep[0].startswith("+"): 
+        raise ValueError("El número de teléfono debe empezar por '+'")
+    
+    if not sep[1].isdigit():
+        raise ValueError("La parte central del número debe ser numérico")
+    
+    else:
+        return sep[1]
